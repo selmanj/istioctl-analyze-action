@@ -5,6 +5,5 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
       jq
 
-
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
