@@ -15,7 +15,7 @@ if [[ $success -ne 0 ]]; then
     curl -s -S \
         -H "Authorization: token $INPUT_REPOTOKEN" \
         --header "Content-Type application/json" \
-        --data "$data"
+        --data "$data" \
         "$comments_url"
 fi
 
