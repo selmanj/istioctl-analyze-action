@@ -1,9 +1,12 @@
 name: 'istioctl analyze'
 description: 'Runs istioctl analyze on configuration'
 inputs: 
-  config-dir:
+  configDir:
     description: 'Directory containing config to analyze'
-    required: true  
+    required: true
+  repoToken:
+    description: 'Github token for the repo to use'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
