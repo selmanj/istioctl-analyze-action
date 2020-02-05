@@ -17,7 +17,7 @@ if [[ $success -ne 0 ]]; then
     data=$(echo '{}' | jq --arg body "$comment" '.body = $body')
     curl -s -S \
         -H "Authorization: token $INPUT_REPOTOKEN" \
-        --header "Content-Type application/json" \
+        -H "Content-Type: application/json" \
         --data "$data" \
         "$comments_url" > /dev/null
 fi
