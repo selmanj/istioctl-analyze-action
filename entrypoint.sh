@@ -10,7 +10,7 @@ set -e
 
 if [[ $success -ne 0 ]]; then
     # TODO check if PR and only comment if it is
-    comments_url=$(jq '.pull_request.comments_url' $GITHUB_EVENT_PATH)
+    comments_url=$(jq -r '.pull_request.comments_url' $GITHUB_EVENT_PATH)
     data=$(echo '{}' | jq --arg body "$output" '.body = $body')
     curl -s -S \
         -H "Authorization: token $INPUT_REPOTOKEN" \
