@@ -14,7 +14,8 @@ if [[ $success -ne 0 ]]; then
     curl -s -S \
         -H "Authorization: token $INPUT_REPOTOKEN" \
         --header "Content-Type application/json" \
-        --data $(echo '{}' | jq --arg body "$output" '.body = $body')
+        --data "$(echo '{}' | jq --arg body "$output" '.body = $body')"
+        $comments_url
 fi
 
 exit $success
