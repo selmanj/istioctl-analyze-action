@@ -5,7 +5,7 @@ output=$(find $1 \
     -name \*.yaml \
     -print0 | xargs -0 istioctl analyze -A -d 2>&1)
 success=$?
-echo $output
+echo "$output"
 set -e
 
 if [[ $success -ne 0 ]]; then
