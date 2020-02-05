@@ -16,3 +16,5 @@ if [[ $success -ne 0 ]]; then
         --header "Content-Type application/json" \
         --data $(echo '{}' | jq --arg body "$output" '.body = $body')
 fi
+
+exit $success
