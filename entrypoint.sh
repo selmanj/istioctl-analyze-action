@@ -11,12 +11,13 @@ set -e
 if [[ $success -ne 0 ]]; then
     # TODO check if PR and only comment if it is
     comments_url=$(jq -r '.pull_request.comments_url' $GITHUB_EVENT_PATH)
-    data=$(echo '{}' | jq --arg body "$output" '.body = $body')
+    comment="istioctl analyze found problems:\n\n```\n$output```\n"
+    data=$(echo '{}' | jq --arg body "$comment" '.body = $body')
     curl -s -S \
         -H "Authorization: token $INPUT_REPOTOKEN" \
         --header "Content-Type application/json" \
         --data "$data" \
-        "$comments_url"
+        "$comments_url" > /dev/null
 fi
 
 exit $success
