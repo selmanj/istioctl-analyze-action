@@ -1,9 +1,6 @@
 #!/bin/bash
 set +e
-output=$(find $1 \
-    -type f \
-    -name \*.yaml \
-    -print0 | xargs -0 istioctl analyze -A -d 2>&1)
+output=$(istioctl analyze -A $1 2>&1)
 success=$?
 echo "$output"
 set -e
