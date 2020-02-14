@@ -1,6 +1,6 @@
 #!/bin/bash
 set +e
-output=$(/istioctl/istioctl analyze -A $1 2>&1)
+output=$(/istioctl/istioctl analyze -A $1 --use-kube=false 2>&1)
 success=$?
 echo "$output"
 set -e
